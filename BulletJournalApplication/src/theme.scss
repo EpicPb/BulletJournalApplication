@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css?family=Lobster|Roboto');
+@include mat-core();
+
+$custom-primary: mat-palette($mat-light-blue, 900);
+$custom-accent:  mat-palette($mat-light-blue, 200);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent);
+
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Lobster, cursive',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $title: mat-typography-level(44px, 48px, 500),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+
+$alt-primary: mat-palette($mat-grey, 800);
+$alt-accent:  mat-palette($mat-cyan, 800);
+$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+
+@include angular-material-theme($custom-theme);
+// @include mat-card-theme($custom-theme);
+.alternative{
+  @include angular-material-theme($alt-theme);
+}
+.lobster{
+  @include angular-material-typography($custom-typography);
+}
+
+@include mat-toolbar-typography($custom-typography);

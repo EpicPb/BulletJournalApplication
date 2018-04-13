@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+body{
+  // background-color: rgba(111, 210, 151, .5);
+  // padding: 20px;
+}
+mat-tab-group .mat-ink-bar{
+  background-color: white;
+}
+
+mat-tab-group .mat-tab-label{
+  color: white;
+  height: 5vh;
+}
+mat-tab-group .mat-tab-labels{
+  background-color: #01579b;
+}

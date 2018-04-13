@@ -1,0 +1,14 @@
+<div class="">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Quick Notes</span>
+      <span class="spacer"></span>
+      <!-- <i class="material-icons">keyboard_arrow_down</i> -->
+      <button mat-raised-button (click)="AfService.logout()" name="button" class="logout-button">logout</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="container">
+    <app-items></app-items>
+  </div>
+
+</div>

@@ -1,0 +1,15 @@
+.container{
+  background-color: rgb(241, 241, 241);
+  // padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logout-button{
+  color: black;
+}
