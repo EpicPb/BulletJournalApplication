@@ -1,5 +1,10 @@
 .container{
-  background-color: rgb(241, 241, 241);
+  // background-color: rgb(241, 241, 241);
+  // background-image: url("dotgrid.jpg");
+  // background-size: 20%;
+  // background-repeat: repeat;
+
+
   // padding: 10px;
   display: flex;
   flex-direction: column;
@@ -12,4 +17,8 @@
 
 .logout-button{
   color: black;
+}
+.background{
+  background-color: rgb(240, 240, 240);
+
 }
