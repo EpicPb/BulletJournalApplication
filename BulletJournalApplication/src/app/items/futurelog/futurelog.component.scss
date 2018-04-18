@@ -1,0 +1,79 @@
+    [mwlDraggable] {
+      background-color: red;
+      width: 200px;
+      height: 200px;
+      position: relative;
+      z-index: 1;
+      float: left;
+      margin-right: 10px;
+    }
+    [mwlDroppable] {
+      // background-color: rgb(129 131 131);
+      // width: 100%;
+      height: 200px;
+      // position: relative;
+      z-index: -1;
+      margin: 5px;
+      // top: 50px;
+      // left: 100px;
+
+    }
+    [mwlDraggable]
+    [mwlDroppable] {
+      // color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dropOverActive {
+      border: dashed 1px black;
+      background-color: lightgreen;
+    }
+
+// ---------------------------
+    .monthsCard{
+      width: 25%;
+      // height: 200px;
+      position: relative;
+      z-index: -1;
+      // margin-top: 0px;
+    }
+
+    .container{
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+    }
+
+    .col{
+      width: 20%;
+    }
+    .col + .col{
+      margin-left: 10px;
+    }
+
+    .col-80{
+      width: 80%;
+      display: flex;
+      flex: 1 1 auto;
+      flex-wrap: wrap;
+      // justify-content: center;
+      align-items: center;
+
+    }
+
+      .month1{background-color: lightgreen;}
+
+     .January{background-color: lightgreen;}
+     .February{background-color: lightgreen;}
+     .March{background-color: lightgreen;}
+     .April{background-color: lightgreen;}
+     .May{background-color: lightgreen;}
+     .June{background-color: lightgreen;}
+     .July{background-color: lightgreen;}
+     .August{background-color: lightgreen;}
+     .September{background-color: lightgreen;}
+     .October{background-color: lightgreen;}
+     .November{background-color: lightgreen;}
+     .December{background-color: lightgreen;}

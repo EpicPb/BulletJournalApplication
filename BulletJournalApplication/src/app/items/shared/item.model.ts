@@ -7,7 +7,7 @@ export class Note extends Item{
   description: string;
 }
 
-export class Event extends Note{
+export class Evont extends Note{
   month: string;
   week: string;
   day: string;

@@ -7,6 +7,7 @@ import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 @Injectable()
 export class ItemsService {
   itemList: AngularFireList<any>;
+
   selectedItem: Item = new Item();
 
 
@@ -32,6 +33,60 @@ export class ItemsService {
     }
 
     deleteItem($key: string){
+      this.itemList.remove($key);
+    }
+
+    // Note extends Item
+
+
+    insertNote(note: Note){
+      var d = new Date();
+      this.itemList.push({
+        title: note.title,
+        description: note.description,
+      });
+    }
+
+    updateNote(note: Note){
+      this.itemList.update(item.$key,
+      {
+        title: note.title,
+        description: note.description,
+      });
+    }
+
+    deleteNote($key: string){
+      this.itemList.remove($key);
+    }
+
+    // Event extends Note
+
+
+    insertEvent(event: Evont){
+      var d = new Date();
+      this.itemList.push({
+        title: event.title,
+        day: event.day,
+        description: event.description,
+        month: event.month,
+        week:event.week,
+      });
+    }
+
+    updateEvent(event: Evont){
+      console.log("did it make it to the update?");
+      console.log(event);
+      this.itemList.update(event.$key,
+      {
+        title: event.title,
+        day: event.day,
+        description: event.description,
+        month: event.month,
+        week:event.week,
+      });
+    }
+
+    deleteEvent($key: string){
       this.itemList.remove($key);
     }
 }

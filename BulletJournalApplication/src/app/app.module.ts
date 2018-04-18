@@ -26,6 +26,10 @@ import { LoginComponent } from './login/login.component';
 import { AfService } from './providers/af.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'angular-calendar';
+
+import { DragAndDropModule } from 'angular-draggable-droppable';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +51,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MaterialModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CalendarModule.forRoot(),
+    DragAndDropModule.forRoot()
+
   ],
   providers: [ AfService ],
   bootstrap: [AppComponent]

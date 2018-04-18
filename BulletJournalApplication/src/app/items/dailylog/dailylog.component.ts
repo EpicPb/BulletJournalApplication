@@ -21,7 +21,8 @@ export class DailylogComponent implements OnInit {
         i.forEach(element => {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
-
+          console.log(y);
+          console.log("y")
           if(y.month != null && y.day != null){
             this.itemList.push(y as Item);
           }

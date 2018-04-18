@@ -1,3 +1,48 @@
-<p>
-  futurelog works!
-</p>
+<!-- <p>{{weekofmonth}}</p>
+<p>{{dayofweek}}</p>
+<p>{{month}}</p>
+<p>{{day}}</p>
+<p>{{year}}</p>
+<br>
+<p>{{fixedTimezone | date}}</p>
+<p>{{fixedTimezone}}</p>
+<p>{{day2}}</p>
+<p>{{day6}}</p>
+
+<div class="" *ngFor="let day of daysofweek">
+  {{day}}
+</div>
+<div class="" *ngFor="let d of dayi">
+  {{d}}
+</div> -->
+<div class="container">
+  <div class="col">
+    <app-unorganizedlist></app-unorganizedlist>
+  </div>
+  <div class="col col-80">
+    <!-- <div mwlDraggable dropData="foo">
+      Drag me!
+    </div>
+    <div mwlDraggable dropData="bar" [dragSnapGrid]="{x: 100, y: 100}">
+      I snap to a 100 x 100 grid
+    </div> -->
+    <div class="monthsCard" *ngFor="let mon of months; index as i; trackBy: trackByFn">
+      <mat-card id="mon"
+        [class.dropOverActive]="dropOverActive"
+
+        [class.month1.mon]="months1[mon]"
+
+        mwlDroppable
+
+
+        (dragEnter)="onEnter($event, mon)"
+        (dragLeave)="onLeave($event, mon)"
+        (drop)="onDrop($event, mon)">
+        <span [hidden]="droppedData">{{mon}}</span>
+        <span [hidden]="!droppedData">{{ droppedData }}</span>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
