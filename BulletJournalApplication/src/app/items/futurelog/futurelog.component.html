@@ -20,12 +20,7 @@
     <app-unorganizedlist></app-unorganizedlist>
   </div>
   <div class="col col-80">
-    <!-- <div mwlDraggable dropData="foo">
-      Drag me!
-    </div>
-    <div mwlDraggable dropData="bar" [dragSnapGrid]="{x: 100, y: 100}">
-      I snap to a 100 x 100 grid
-    </div> -->
+
     <div class="monthsCard" *ngFor="let mon of months; index as i; trackBy: trackByFn">
       <mat-card id="mon"
         [class.dropOverActive]="dropOverActive"

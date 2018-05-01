@@ -30,6 +30,11 @@ import { CalendarModule } from 'angular-calendar';
 
 import { DragAndDropModule } from 'angular-draggable-droppable';
 
+import { CookieService } from 'ngx-cookie-service';
+import { HttpModule } from '@angular/http';
+
+import {ItemsService} from './items/shared/items.service';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,8 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
     DailylogComponent,
     HomeComponent,
     ItemComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +59,11 @@ import { DragAndDropModule } from 'angular-draggable-droppable';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot(),
-    DragAndDropModule.forRoot()
+    DragAndDropModule.forRoot(),
+    HttpModule
 
   ],
-  providers: [ AfService ],
+  providers: [ AfService, CookieService, ItemsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

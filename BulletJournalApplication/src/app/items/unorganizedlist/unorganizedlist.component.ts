@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from '../shared/items.service';
-import { Item, Note, Event, Task } from '../shared/item.model';
-
+import { Item, Note, Evont, Task } from '../shared/item.model';
 
 @Component({
   selector: 'app-unorganizedlist',
@@ -11,20 +10,34 @@ import { Item, Note, Event, Task } from '../shared/item.model';
 export class UnorganizedlistComponent implements OnInit {
 
   itemList: Item[];
-  constructor(private itemsService: ItemsService) { }
+  x: AngularFireList<any>;
+  showSpinner: boolean = true;
+
+  constructor(private itemsService: ItemsService) {
+    console.log('load unorganizedlist component');
+ }
 
   ngOnInit() {
-    var x = this.itemsService.getData();
-    x.snapshotChanges().subscribe(i => {
-      this.itemList = [];
-      i.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        if(y.month == null){
-          this.itemList.push(y as Item);
-        }
+    // var x = this.itemsService.getData();
+    setTimeout(() => {
+      console.log('getdata');
+      this.x = this.itemsService.getData();
+      this.x.snapshotChanges().subscribe(i => {
+        this.showSpinner = false;
+        this.itemList = [];
+        i.forEach(element => {
+          var y = element.payload.toJSON();
+          y["$key"] = element.key;
+          if(y.month == null){
+            this.itemList.push(y as Item);
+          }
+        });
       });
-    });
+    },4000);
+
+
+
+
   }
 
   onEdit(it: Item){
@@ -32,7 +45,7 @@ export class UnorganizedlistComponent implements OnInit {
   }
 
   onDelete(key: string){
-    if(confirm('Are you sure you want to delete this note?') == true){
+    if(confirm('Are you sure you want to delete this note?' + key) == true){
       this.itemsService.deleteItem(key);
     }
   }

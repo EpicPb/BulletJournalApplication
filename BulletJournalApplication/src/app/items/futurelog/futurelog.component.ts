@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
 import { ItemsService } from '../shared/items.service';
-import { Item, Note, Event, Task } from '../shared/item.model';
+import { Item, Note, Evont, Task } from '../shared/item.model';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class FuturelogComponent implements OnInit {
   month = this.pipe.transform(this.today, 'MMMM');
   monthindex = this.months.indexOf(this.month);
 
-  months = this.months.slice(this.monthindex);
+  months2 = this.months.slice(this.monthindex);
 
 
   // year = this.pipe.transform(this.today, 'y');
@@ -48,18 +48,18 @@ export class FuturelogComponent implements OnInit {
 
   dropOverActive: boolean = false;
 
-  January: boolean = false;
-  February: boolean = false;
-  March: boolean = false;
-  April: boolean = false;
-  May: boolean = false;
-  June: boolean = false;
-  July: boolean = false;
-  August: boolean = false;
-  September: boolean = false;
-  October: boolean = false;
-  November: boolean = false;
-  December: boolean = false;
+  // January: boolean = false;
+  // February: boolean = false;
+  // March: boolean = false;
+  // April: boolean = false;
+  // May: boolean = false;
+  // June: boolean = false;
+  // July: boolean = false;
+  // August: boolean = false;
+  // September: boolean = false;
+  // October: boolean = false;
+  // November: boolean = false;
+  // December: boolean = false;
 
   months1 = { 'January' : false,
              'February' : false,
@@ -76,28 +76,29 @@ export class FuturelogComponent implements OnInit {
            };
 
  droppedData: string = '';
+ splitData: string [];
+ evont: Evont;
 
  onDrop({dropData}: {dropData: any}, mon: any): void {
    this.dropOverActive = false;
    this.months1[mon] = false;
    // console.log(dropData);
    this.droppedData =  dropData.toString();
-   this.droppedData = this.droppedData.split(",")
+   this.splitData = this.droppedData.split(",");
 
    console.log(dropData);
 
 
-
-   event = { '$key': this.droppedData[0],
-             'title': this.droppedData[1],
+   this.evont = { '$key': this.splitData[0],
+             'title': this.splitData[1],
              'day': '',
              'description': '',
              'month': mon,
              'week': ''
-                   }
+           };
 
 
-   this.itemsService.updateEvent(event);
+   this.itemsService.updateEvent(this.evont);
 
    // console.log(mon);
    // console.log(this.droppedData);

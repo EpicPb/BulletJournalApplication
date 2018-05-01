@@ -1,10 +1,17 @@
 <div class="background">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Bullet Journal</span>
+      <span>Archive</span>
       <span class="spacer"></span>
       <!-- <i class="material-icons">keyboard_arrow_down</i> -->
-      <button mat-raised-button (click)="AfService.logout()" name="button" class="logout-button">logout</button>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <img mat-card-avatar [src]="photoURL" alt="profile photo">
+      </button>
+      <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
+        <button mat-menu-item (click)="AfService.logout()" name="button" class="logout-button">logout</button>
+      </mat-menu>
+
+
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="container">

@@ -3,6 +3,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AfService } from '../providers/af.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,11 @@ import { Router } from '@angular/router';
   providers: [ AfService ]
 })
 export class LoginComponent implements OnInit {
+  cookieValue = 'UNKNOWN';
 
 
   constructor(public AfService: AfService, private router: Router) {
+    console.log('load login component');
     this.AfService.user.subscribe(authState => {
        if(authState) {
          this.router.navigateByUrl('/home');
@@ -22,7 +26,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    console.log(this.AfService.user)
+   }
 
   login(){
     this.AfService.loginWithGoogle();

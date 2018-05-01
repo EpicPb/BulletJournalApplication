@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from '../shared/items.service';
-import { Item, Note, Event, Task } from '../shared/item.model';
+import { Item, Note, Evont, Task } from '../shared/item.model';
 
 
 @Component({
@@ -21,8 +21,8 @@ export class DailylogComponent implements OnInit {
         i.forEach(element => {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
+          console.log('object: ');
           console.log(y);
-          console.log("y")
           if(y.month != null && y.day != null){
             this.itemList.push(y as Item);
           }

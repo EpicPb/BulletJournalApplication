@@ -10,6 +10,29 @@ button{
 
 mat-card{
   word-break: break-all;
-  padding: 15px;
+  padding: 12px;
   margin-bottom: 2px;
+  display: flex;
+  flex: 1 1 auto;
+}
+.loading{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.spacer{
+  flex: 2;
+}
+i.material-icons{
+  color: rgba(163, 163, 163, .5);
+  cursor: pointer;
+}
+i.material-icons:hover{
+  color: rgba(163, 163, 163, 1);
+  cursor: pointer;
+}
+button{
+  // width: 0px;
+  // height: 0px;
+  padding: 0px;
 }

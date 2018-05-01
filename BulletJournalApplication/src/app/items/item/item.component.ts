@@ -35,10 +35,10 @@ export class ItemComponent implements OnInit {
     this.itemsService.selectedItem = {
       $key: null,
       title: '',
-      day: '',
-      description: '',
-      week: '',
-      month: ''
+      // day: '',
+      // description: '',
+      // week: '',
+      // month: ''
     }
   }
 }

@@ -1,27 +1,56 @@
 import { Injectable } from '@angular/core';
 
-import { Item, Note, Event, Task } from './item.model';
+import { Item, Note, Evont, Task } from './item.model';
 
-import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
+
+import { AfService } from '../../providers/af.service';
+import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class ItemsService {
   itemList: AngularFireList<any>;
+  // itemList: FirebaseListObservable<any[]> = null;
 
   selectedItem: Item = new Item();
+  userId: string;
 
 
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(private AfService: AfService , private firebase: AngularFireDatabase, private afAuth: AngularFireAuth) {
+    console.log('initialize item service1: ' + this.userId);
 
-    getData(){
-      this.itemList = this.firebase.list('items');
-      return this.itemList;
+    this.AfService.user.subscribe(user => {
+          if(user) this.userId = user.uid;
+          console.log('initialize item service2: ' + this.userId);
+
+        })
+
+    // this.afAuth.user.subscribe(res => {
+    //   responseAfterSuccess => {
+    //     if(user) this.userId = user.uid;
+    //     console.log('initialize item service: ' + this.userId);
+    //   }
+    //   responseAfterError => {
+    //     console.log('error');
+    //   }
+    //
+    // })
+   }
+
+    getData() {
+      if (!this.userId) return;
+          console.log("getData " + this.userId);
+          this.itemList = this.firebase.list('items/' +  this.userId + '/');
+          return this.itemList;
     }
     insertItem(item: Item){
-      var d = new Date();
+      var d = Date.now();
       this.itemList.push({
-        title: item.title
+        title: item.title,
+        datetime: d
       });
     }
 
@@ -48,7 +77,7 @@ export class ItemsService {
     }
 
     updateNote(note: Note){
-      this.itemList.update(item.$key,
+      this.itemList.update(note.$key,
       {
         title: note.title,
         description: note.description,
