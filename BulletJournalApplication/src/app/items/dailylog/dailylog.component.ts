@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ItemsService } from '../shared/items.service';
 import { Item, Note, Evont, Task } from '../shared/item.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
   selector: 'app-dailylog',
   templateUrl: './dailylog.component.html',
-  styleUrls: ['./dailylog.component.scss']
+  styleUrls: ['./dailylog.component.scss'],
+  providers: [ ]
+
 })
 export class DailylogComponent implements OnInit {
 
@@ -15,6 +18,8 @@ export class DailylogComponent implements OnInit {
     constructor(private itemsService: ItemsService) { }
 
     ngOnInit() {
+      setTimeout(() => {
+        console.log('getdata');
       var x = this.itemsService.getData();
       x.snapshotChanges().subscribe(i => {
         this.itemList = [];
@@ -23,12 +28,13 @@ export class DailylogComponent implements OnInit {
           y["$key"] = element.key;
           console.log('object: ');
           console.log(y);
-          if(y.month != null && y.day != null){
+          // if(y.month != null && y.day != null){
             this.itemList.push(y as Item);
-          }
+          // }
 
         });
       });
+    },4000);
     }
 
     onEdit(it: Item){
@@ -40,4 +46,32 @@ export class DailylogComponent implements OnInit {
         this.itemsService.deleteItem(key);
       }
     }
-  }
+  //
+  //   openDialog(): void {
+  //   let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  //     width: '250px',
+  //     data: { }
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //
+  //   });
+  // }
+}
+
+// @Component({
+//   selector: 'dialog-overview-example-dialog',
+//   templateUrl: 'dailylogdialog.html',
+// })
+// export class DialogOverviewExampleDialog {
+//
+//   constructor(
+//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: any) { }
+//
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+//
+// }

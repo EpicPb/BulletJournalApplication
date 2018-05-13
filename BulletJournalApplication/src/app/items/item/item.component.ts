@@ -35,6 +35,7 @@ export class ItemComponent implements OnInit {
     this.itemsService.selectedItem = {
       $key: null,
       title: '',
+      datetime: '',
       // day: '',
       // description: '',
       // week: '',

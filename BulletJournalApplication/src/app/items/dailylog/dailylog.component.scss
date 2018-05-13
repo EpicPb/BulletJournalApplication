@@ -4,8 +4,34 @@
 }
 mat-card{
   word-break: break-all;
-  padding: 15px;
+  padding: 14px;
   margin-bottom: 2px;
   width: 50vw;
+  display: flex;
+  flex: 1 1 auto;
+  cursor: pointer;
+  transition: all .25s ease;
+  // background-color: rgba(255, 255, 255, 0);
 
+
+}
+mat-card:hover{
+  transform: scale(1.02);
+}
+.spacer{
+  flex: 2;
+}
+i.material-icons{
+  color: rgba(163, 163, 163, .5);
+  cursor: pointer;
+}
+i.material-icons:hover{
+  color: rgba(163, 163, 163, 1);
+  cursor: pointer;
+}
+
+button{
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0px;
 }

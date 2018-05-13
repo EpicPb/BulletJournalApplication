@@ -14,7 +14,6 @@ import { MatButtonModule,
         MatTabsModule,
         MatFormFieldModule,
         MatExpansionModule,
-        MatProgressSpinnerModule,
         MatMenuModule
       } from '@angular/material';
 
@@ -33,7 +32,6 @@ import { MatButtonModule,
             MatTabsModule,
             MatFormFieldModule,
             MatExpansionModule,
-            MatProgressSpinnerModule,
             MatMenuModule
 
           ],
@@ -51,7 +49,6 @@ import { MatButtonModule,
             MatTabsModule,
             MatFormFieldModule,
             MatExpansionModule,
-            MatProgressSpinnerModule,
             MatMenuModule
 
           ],

@@ -2,7 +2,7 @@
 button{
   background-color: rgba(255, 255, 255, 0);
   border: none;
-  padding: 10px;
+  padding: 0px;
 }
 .itemTitle{
   padding: 10px;
@@ -10,11 +10,13 @@ button{
 
 mat-card{
   word-break: break-all;
-  padding: 12px;
+  padding: 14px;
   margin-bottom: 2px;
   display: flex;
   flex: 1 1 auto;
+  // transition: all .25s ease;
 }
+
 .loading{
   width: 100%;
   display: flex;
@@ -30,9 +32,4 @@ i.material-icons{
 i.material-icons:hover{
   color: rgba(163, 163, 163, 1);
   cursor: pointer;
-}
-button{
-  // width: 0px;
-  // height: 0px;
-  padding: 0px;
 }

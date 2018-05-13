@@ -91,6 +91,7 @@ export class FuturelogComponent implements OnInit {
 
    this.evont = { '$key': this.splitData[0],
              'title': this.splitData[1],
+             'datetime': this.splitData[2],
              'day': '',
              'description': '',
              'month': mon,
