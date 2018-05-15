@@ -1,0 +1,20 @@
+.col-app-item{
+    flex: 1 1 auto;
+}
+.col-app-unorgList{
+  width: 20%;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.col{
+  width: 20%;
+}
+.app-item{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

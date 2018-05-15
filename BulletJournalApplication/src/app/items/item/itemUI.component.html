@@ -1,0 +1,27 @@
+<!-- <div class="form-container">
+  <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key">
+
+      <input class="title" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" placeholder="Quick note.." maxlength="128">
+      <mat-hint align="end">{{name.value.length}} / 128</mat-hint>
+
+  </form>
+</div> -->
+
+<!-- <mat-card class="input">
+  Quick note
+</mat-card> -->
+
+<mat-accordion>
+  <mat-expansion-panel class="input">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <mat-form-field class="note" floatPlaceholder="never">
+          <!-- <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key"> -->
+          <input matInput placeholder="Quick note" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" maxlength="128">
+          <!-- <mat-hint align="end">{{name.value.length}} / 128</mat-hint> -->
+        </mat-form-field>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>

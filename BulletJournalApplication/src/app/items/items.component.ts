@@ -3,8 +3,8 @@ import { ItemsService } from './shared/items.service';
 
 @Component({
   selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss'],
+  templateUrl: './itemsUI.component.html',
+  styleUrls: ['./itemsUI.component.scss'],
   providers: [ItemsService]
 })
 export class ItemsComponent implements OnInit {

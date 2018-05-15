@@ -20,7 +20,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { FormsModule } from '@angular/forms';
+// import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { ItemComponent } from './items/item/item.component';
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
@@ -71,7 +72,6 @@ import {HttpService} from './http.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
@@ -82,6 +82,9 @@ import {HttpService} from './http.service';
     DragAndDropModule.forRoot(),
     HttpModule,
     ModalModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+
 
 
   ],

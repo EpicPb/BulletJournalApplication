@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-item',
-  templateUrl: './item.component.html',
+  templateUrl: './itemUI.component.html',
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {

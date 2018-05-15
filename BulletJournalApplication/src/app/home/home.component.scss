@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Guntur');
 .container{
   // background-color: rgb(241, 241, 241);
   // background-image: url("dotgrid.jpg");
@@ -19,6 +20,52 @@
   color: black;
 }
 .background{
-  background-color: rgb(240, 240, 240);
+  // background-color: rgb(240, 240, 240);
+  // background-color: rgb(98, 98, 98);
+}
+.title{
+  color: white;
+  font-family: 'Hind Guntur', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+}
 
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.menubutton{
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  padding: 0px;
+  background-color: none;
+  border: none;
+}
+.sidenav-icon{
+  margin-right: 20px;
+  color: rgb(100, 100, 100);
+}
+
+.example-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.example-sidenav {
+  display: flex;
+  // align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+  background: rgba(200, 200, 200, 0.0);
+
+}
+.mat-list-item{
+  padding-left: 20px;
+  font-size: 14px;
+  min-width: 300px;
+}
+mat-list-item:hover{
+  background-color: rgba(200, 200, 200, 0.5);
 }

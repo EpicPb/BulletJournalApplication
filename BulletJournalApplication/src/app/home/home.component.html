@@ -1,21 +1,53 @@
 <div class="background">
   <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <!-- <mat-toolbar-row> -->
       <span>Archive</span>
       <span class="spacer"></span>
-      <!-- <i class="material-icons">keyboard_arrow_down</i> -->
       <button mat-button [matMenuTriggerFor]="menu">
         <img mat-card-avatar [src]="photoURL" alt="profile photo">
       </button>
       <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
         <button mat-menu-item (click)="AfService.logout()" name="button" class="logout-button">logout</button>
       </mat-menu>
-
-
-    </mat-toolbar-row>
+    <!-- </mat-toolbar-row> -->
   </mat-toolbar>
   <div class="container">
     <app-items></app-items>
   </div>
 
 </div>
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav alternative"
+                 [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                 [fixedBottomGap]="options.value.bottom">
+      <mat-list>
+        <a routerLink="/" routerLinkActive="active">
+          <mat-list-item>
+            <mat-icon mat-list-icon class="">home</mat-icon>
+            <h4 mat-line>Home</h4>
+          </mat-list-item>
+        </a>
+        <a routerLink="/task" routerLinkActive="active">
+          <mat-list-item>
+            <mat-icon mat-list-icon class="">done</mat-icon>
+            <h4 mat-line>Tasks</h4>
+          </mat-list-item>
+        </a>
+        <a routerLink="/calendar" routerLinkActive="active" id="cal">
+          <mat-list-item>
+            <mat-icon mat-list-icon class="">date_range</mat-icon>
+            <h4 mat-line>Calendar</h4>
+          </mat-list-item>
+        </a>
+
+
+
+      </mat-list>
+
+    </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container> -->

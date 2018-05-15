@@ -1,20 +1,13 @@
 <mat-tab-group class="demo-tab-group" color="primary">
   <mat-tab label="Home">
-    <ng-template mat-tab-label>
-      <i class="material-icons">home</i></ng-template>
+    <ng-template mat-tab-label><i class="material-icons">home</i></ng-template>
     <div class="container">
-      <div class="col-app-unorgList">
-        <app-unorganizedlist></app-unorganizedlist>
-      </div>
-      <div class="col-app-item">
+      <div class="app-item">
         <app-item></app-item>
-        <app-dailylog></app-dailylog>
-      </div>
-      <div class="col">
-        <app-monthlylog></app-monthlylog>
       </div>
     </div>
   </mat-tab>
+
   <mat-tab label="Weekly">
     <app-unorganizedlist></app-unorganizedlist>
   </mat-tab>

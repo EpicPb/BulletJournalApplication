@@ -24,12 +24,12 @@
   width: 100%;
 }
 
-mat-hint{
-  background-color: white;
-  padding: 1vw;
-  border-radius: .2vw;
-
-}
+// mat-hint{
+//   background-color: white;
+//   padding: 1vw;
+//   border-radius: .2vw;
+//
+// }
 
 // .container{
 //   display: flex;
@@ -47,3 +47,13 @@ mat-hint{
 // mat-form-field{
 //   width: 100%;
 // }
+.input{
+  width: 40vw;
+  color: rgb(152, 152, 152);
+}
+.mat-expansion-indicator {
+      visibility: hidden;
+}
+.note{
+  width: 100%;
+}

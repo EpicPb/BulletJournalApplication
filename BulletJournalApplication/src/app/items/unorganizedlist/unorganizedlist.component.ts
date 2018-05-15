@@ -33,7 +33,7 @@ export class UnorganizedlistComponent implements OnInit {
           // }
         });
       });
-    },4000);
+    },5000);
   }
 
 

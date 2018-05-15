@@ -1,0 +1,39 @@
+<div>
+  <mat-toolbar color="primary">
+    <button mat-button name="button" class="menubutton" (click)="sidenav.toggle()">
+      <i class="material-icons md-light">menu</i>
+    </button>
+    <img src="../../assets/images/archiveWhite.png" alt="" height="50px">
+    <h1 class="title">ArcHive.</h1>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu" class="menubutton">
+      <img mat-card-avatar [src]="photoURL" alt="profile photo">
+    </button>
+    <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
+      <button mat-menu-item (click)="AfService.logout()" name="button" class="logout-button">logout</button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+                 [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                 [fixedBottomGap]="options.value.bottom">
+      <mat-list>
+        <a (click)="showNotes()">
+          <mat-list-item><i class="material-icons sidenav-icon">insert_drive_file</i>Notes</mat-list-item>
+        </a>
+        <a (click)="showCalendar()">
+            <mat-list-item><i class="material-icons sidenav-icon">calendar_today</i>Calendar</mat-list-item>
+        </a>
+        <!-- <mat-list-item><i class="material-icons sidenav-icon">insert_drive_file</i>Hello</mat-list-item>
+        <mat-list-item><i class="material-icons sidenav-icon">insert_drive_file</i>Hello</mat-list-item>
+        <mat-list-item><i class="material-icons sidenav-icon">insert_drive_file</i>Hello</mat-list-item>
+        <mat-list-item><i class="material-icons sidenav-icon">insert_drive_file</i>Hello</mat-list-item> -->
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+      <!-- <app-items></app-items> -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
