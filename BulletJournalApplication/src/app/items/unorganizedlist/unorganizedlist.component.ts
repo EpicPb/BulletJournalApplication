@@ -14,11 +14,11 @@ export class UnorganizedlistComponent implements OnInit {
   showSpinner: boolean = true;
 
   constructor(private itemsService: ItemsService) {
-    console.log('load unorganizedlist component');
+    // console.log('load unorganizedlist component');
  }
 
   ngOnInit() {
-    // var x = this.itemsService.getData();
+    var x = this.itemsService.getData();
     setTimeout(() => {
       console.log('getdata');
       this.x = this.itemsService.getData();
@@ -28,13 +28,25 @@ export class UnorganizedlistComponent implements OnInit {
         i.forEach(element => {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
-          // if(y.month == null){
+          if(y.month == null){
             this.itemList.push(y as Item);
-          // }
+          }
         });
       });
     },5000);
+      // setTimeout(() => {
+      //     this.showSpinner = false;
+      //     this.itemList = [];
+      //       for(let item of this.itemsService.list){
+      //       console.log("month:" + item.month);
+      //       if(item.month == undefined){
+      //         console.log(item);
+      //         this.itemList.push(item as Item);
+      //     }
+      //   }
+      // },5000);
   }
+
 
 
   onEdit(it: Item){

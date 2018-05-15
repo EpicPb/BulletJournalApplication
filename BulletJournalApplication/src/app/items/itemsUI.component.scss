@@ -13,8 +13,21 @@
 .col{
   width: 20%;
 }
-.app-item{
+.home{
   width: 100%;
+  min-height: 80vh;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+.app-item{
+  margin-bottom: 20px;
+}
+.app-list{
+  width: 60vw;
+}
+
+// .submit{
+//   visibility: hidden;
+// }

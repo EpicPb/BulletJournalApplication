@@ -11,6 +11,8 @@ import { NgForm } from '@angular/forms';
 export class ItemComponent implements OnInit {
 
   constructor(private itemsService: ItemsService) { }
+  checked = false;
+  // panelOpenState = false;
 
   ngOnInit() {
     this.resetForm();
@@ -42,4 +44,12 @@ export class ItemComponent implements OnInit {
       // month: ''
     }
   }
+  // toggleDatePicker(){
+  //   if(this.panelOpenState == true){
+  //     this.panelOpenState = false;
+  //   }else{
+  //     this.panelOpenState = true;
+  //   }
+  // }
+
 }

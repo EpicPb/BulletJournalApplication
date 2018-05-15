@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
 import { ItemsService } from '../shared/items.service';
 import { Item, Note, Evont, Task } from '../shared/item.model';
+import { AngularFireList  } from 'angularfire2/database';
 
 
 @Component({
@@ -25,6 +26,11 @@ export class FuturelogComponent implements OnInit {
   months2 = this.months.slice(this.monthindex);
 
 
+  itemList: Item[];
+  x: AngularFireList<any>;
+
+
+
   // year = this.pipe.transform(this.today, 'y');
   // day = this.pipe.transform(this.today, 'd');
   // weekofmonth = this.pipe.transform(this.today, 'W');
@@ -41,9 +47,27 @@ export class FuturelogComponent implements OnInit {
 
 
   constructor(private itemsService: ItemsService) {
+    // this.itemsService.getData2();
+
   }
 
   ngOnInit() {
+    var x = this.itemsService.getData();
+    setTimeout(() => {
+      console.log('getdata');
+      this.x = this.itemsService.getData();
+      this.x.snapshotChanges().subscribe(i => {
+        this.itemList = [];
+        i.forEach(element => {
+          var y = element.payload.toJSON();
+          y["$key"] = element.key;
+          if(y.month != null){
+            this.itemList.push(y as Item);
+            console.log(y);
+          }
+        });
+      });
+    },5000);
   }
 
   dropOverActive: boolean = false;
@@ -103,9 +127,9 @@ export class FuturelogComponent implements OnInit {
 
    // console.log(mon);
    // console.log(this.droppedData);
-   setTimeout(() => {
+   // setTimeout(() => {
      this.droppedData = '';
-   }, 2000);
+   // }, 100);
  }
 
  onEnter({ dropData }: { dropData: any}, mon: any): void {

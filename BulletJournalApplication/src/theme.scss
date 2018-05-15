@@ -4,7 +4,7 @@
 
 $archiveBlue: (
           50: rgba(7, 0, 70, .6),
-          100: #ffcdd2,
+          100: #4281E8,
           200: #ef9a9a,
           300: #e57373,
           400: #ef5350,
@@ -35,7 +35,7 @@ $archiveBlue: (
           )
         );
 
-$custom-primary: mat-palette($archiveBlue, 50);
+$custom-primary: mat-palette($archiveBlue, 100);
 // $custom-primary: mat-palette($mat-light-blue, 900);
 $custom-accent:  mat-palette($mat-light-blue, 200);
 $custom-theme: mat-light-theme($custom-primary, $custom-accent);

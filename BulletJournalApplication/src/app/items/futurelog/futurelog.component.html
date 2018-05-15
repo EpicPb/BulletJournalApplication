@@ -35,6 +35,11 @@
         (drop)="onDrop($event, mon)">
         <span [hidden]="droppedData">{{mon}}</span>
         <span [hidden]="!droppedData">{{ droppedData }}</span>
+        <div class="" *ngFor="let item of itemList">
+          <p *ngIf="mon == item.month">{{item.title}}</p>
+
+        </div>
+
       </mat-card>
     </div>
 

@@ -13,20 +13,23 @@ import { DatePipe } from '@angular/common';
 export class ItemsService {
   itemList: AngularFireList<any>;
   // itemList: FirebaseListObservable<any[]> = null;
-
+  list: Item[];
   selectedItem: Item = new Item();
   userId: string;
 
 
 
   constructor(private AfService: AfService , private firebase: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    console.log('initialize item service1: ' + this.userId);
+    // console.log('initialize item service1: ' + this.userId);
 
     this.AfService.user.subscribe(user => {
           if(user) this.userId = user.uid;
-          console.log('initialize item service2: ' + this.userId);
+          // console.log('initialize item service2: ' + this.userId);
+
 
         })
+
+
 
     // this.afAuth.user.subscribe(res => {
     //   responseAfterSuccess => {
@@ -38,6 +41,19 @@ export class ItemsService {
     //   }
     //
     // })
+   }
+   getData2() {
+     if (!this.userId) return;
+         this.itemList = this.firebase.list('items/' +  this.userId + '/');
+         this.itemList.snapshotChanges().subscribe(i => {
+           this.list = [];
+           i.forEach(element => {
+             var y = element.payload.toJSON();
+             y["$key"] = element.key;
+               this.list.push(y as Item);
+               console.log(y);
+           });
+         });
    }
 
     getData() {
