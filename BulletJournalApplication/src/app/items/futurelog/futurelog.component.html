@@ -33,12 +33,20 @@
         (dragEnter)="onEnter($event, mon)"
         (dragLeave)="onLeave($event, mon)"
         (drop)="onDrop($event, mon)">
-        <span [hidden]="droppedData">{{mon}}</span>
-        <span [hidden]="!droppedData">{{ droppedData }}</span>
-        <div class="" *ngFor="let item of itemList">
-          <p *ngIf="mon == item.month">{{item.title}}</p>
-
+        <div class="monthcardcontent">
+          <h2 class="monthname" [hidden]="droppedData">{{mon}}</h2>
+          <span [hidden]="!droppedData">{{ droppedData }}</span>
+          <mat-list role="list" class="list">
+            <div  *ngFor="let item of itemList" class="listitem">
+              <mat-list-item class="listitem" *ngIf="mon == item.month">{{item.title}}</mat-list-item>
+            </div>
+          </mat-list>
         </div>
+        <div class="" *ngIf="">
+            No Items
+        </div>
+
+
 
       </mat-card>
     </div>

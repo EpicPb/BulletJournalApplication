@@ -9,7 +9,7 @@ import { AngularFireList  } from 'angularfire2/database';
 })
 export class UnorganizedlistComponent implements OnInit {
 
-  itemList: Item[];
+  itemList: Task[];
   x: AngularFireList<any>;
   showSpinner: boolean = true;
 
@@ -29,7 +29,7 @@ export class UnorganizedlistComponent implements OnInit {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
           if(y.month == null){
-            this.itemList.push(y as Item);
+            this.itemList.push(y as Task);
           }
         });
       });

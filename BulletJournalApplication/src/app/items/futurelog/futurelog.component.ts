@@ -26,7 +26,9 @@ export class FuturelogComponent implements OnInit {
   months2 = this.months.slice(this.monthindex);
 
 
-  itemList: Item[];
+  // itemList: Item[];
+  itemList: Task[];
+
   x: AngularFireList<any>;
 
 
@@ -62,7 +64,7 @@ export class FuturelogComponent implements OnInit {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
           if(y.month != null){
-            this.itemList.push(y as Item);
+            this.itemList.push(y as Task);
             console.log(y);
           }
         });
@@ -115,11 +117,11 @@ export class FuturelogComponent implements OnInit {
 
    this.evont = { '$key': this.splitData[0],
              'title': this.splitData[1],
-             'datetime': this.splitData[2],
+             // 'datetime': this.splitData[2],
              'day': '',
              'description': '',
              'month': mon,
-             'week': ''
+             'year': ''
            };
 
 

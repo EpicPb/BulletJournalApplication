@@ -1,7 +1,7 @@
 export class Item{
  $key: string;
  title: string;
- datetime: string; 
+ datetime: string;
 }
 
 export class Note extends Item{
@@ -10,10 +10,10 @@ export class Note extends Item{
 
 export class Evont extends Note{
   month: string;
-  week: string;
   day: string;
+  year: string;
 }
 
-export class Task extends Event{
+export class Task extends Evont{
   priority: string;
 }

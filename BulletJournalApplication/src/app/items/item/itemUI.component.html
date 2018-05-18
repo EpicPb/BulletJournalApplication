@@ -23,9 +23,9 @@
     <!-- <button mat-button> <i class="material-icons">star</i> </button>
     <button mat-button> <i class="material-icons">star_border</i> </button> -->
     <button mat-button [matMenuTriggerFor]="menu"> <i class="material-icons">label</i> </button>
-    <!-- <button mat-button (click)="toggleDatePicker()"> <i class="material-icons">list</i> </button>
-    <button mat-button (click)="toggleDatePicker()"> <i class="material-icons">calendar_today</i> </button>
-    <button mat-button> <i class="material-icons">alarm_add</i> </button> -->
+    <button mat-button (click)="toggleDatePicker()"> <i class="material-icons">list</i> </button>
+    <button mat-button [matMenuTriggerFor]="date"> <i class="material-icons">calendar_today</i> </button>
+    <button mat-button> <i class="material-icons">alarm_add</i> </button>
 
     <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
       <button mat-menu-item (click)="newTag()" name="button" class="">New Tag</button>

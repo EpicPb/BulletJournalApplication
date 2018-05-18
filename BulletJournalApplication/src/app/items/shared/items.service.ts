@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 export class ItemsService {
   itemList: AngularFireList<any>;
   // itemList: FirebaseListObservable<any[]> = null;
-  list: Item[];
+  list: Task[];
   selectedItem: Item = new Item();
   userId: string;
 
@@ -44,13 +44,15 @@ export class ItemsService {
    }
    getData2() {
      if (!this.userId) return;
-         this.itemList = this.firebase.list('items/' +  this.userId + '/');
+         // this.itemList = this.firebase.list('items/' +  this.userId + '/');
+        this.itemList = this.firebase.list('Notes/' +  this.userId + '/');
+
          this.itemList.snapshotChanges().subscribe(i => {
            this.list = [];
            i.forEach(element => {
              var y = element.payload.toJSON();
              y["$key"] = element.key;
-               this.list.push(y as Item);
+               this.list.push(y as Task);
                console.log(y);
            });
          });
@@ -59,7 +61,9 @@ export class ItemsService {
     getData() {
       if (!this.userId) return;
           console.log("getData " + this.userId);
-          this.itemList = this.firebase.list('items/' +  this.userId + '/');
+          // this.itemList = this.firebase.list('items/' +  this.userId + '/');
+          this.itemList = this.firebase.list('Notes/' +  this.userId + '/');
+
           return this.itemList;
     }
     insertItem(item: Item){
@@ -114,7 +118,7 @@ export class ItemsService {
         day: event.day,
         description: event.description,
         month: event.month,
-        week:event.week,
+        year:event.year,
       });
     }
 
@@ -127,7 +131,7 @@ export class ItemsService {
         day: event.day,
         description: event.description,
         month: event.month,
-        week:event.week,
+        year:event.year,
       });
     }
 
