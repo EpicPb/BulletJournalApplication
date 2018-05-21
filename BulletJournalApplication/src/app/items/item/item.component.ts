@@ -12,6 +12,7 @@ export class ItemComponent implements OnInit {
 
   constructor(private itemsService: ItemsService) { }
   checked = false;
+  inputdate: any;
   // panelOpenState = false;
 
   ngOnInit() {
@@ -19,12 +20,15 @@ export class ItemComponent implements OnInit {
   }
 
   onSubmit(itemForm: NgForm){
+    console.log("onsubmit");
+    console.log(this.inputdate);
     if(itemForm.value.$key == null){
-      this.itemsService.insertItem(itemForm.value);
+      console.log(itemForm.value);
+      this.itemsService.insertTask(itemForm.value);
       console.log("insert");
     }
     else{
-      this.itemsService.updateItem(itemForm.value);
+      this.itemsService.updateTask(itemForm.value);
       console.log("update");
     }
     this.resetForm(itemForm);
@@ -37,11 +41,11 @@ export class ItemComponent implements OnInit {
     this.itemsService.selectedItem = {
       $key: null,
       title: '',
-      datetime: '',
-      // day: '',
-      // description: '',
-      // week: '',
-      // month: ''
+      day: '',
+      note: '',
+      year: '',
+      month: '',
+      priority: ''
     }
   }
   // toggleDatePicker(){

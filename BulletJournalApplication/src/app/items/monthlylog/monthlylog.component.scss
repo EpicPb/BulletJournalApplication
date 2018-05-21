@@ -6,3 +6,27 @@
   background-color: white;
   border-radius: .1vw;
 }
+
+td{
+  width: 100px;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  // height: 100px;
+  // border: 1px solid black;
+
+}
+th{
+  width: 100px;
+}
+.calendar-month{
+  width: 80%;
+  padding-left: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+h2{
+width: 100%;
+}

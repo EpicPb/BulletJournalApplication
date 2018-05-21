@@ -1,27 +1,27 @@
 
 <mat-card class="input">
   <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
-  <mat-form-field class="note" floatPlaceholder="never">
-    <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key">
-    <input matInput placeholder="Quick note" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" maxlength="128">
-    <mat-hint align="end">{{name.value.length}} / 128</mat-hint>
-  </mat-form-field>
-  <!-- <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field><br> -->
-  <!-- <input class="tags" placeholder="Tags"> -->
-  <!-- <mat-radio-group> -->
-  <!-- <div class="checkbox_wrapper">
-    <input type="checkbox"[(ngModel)]="checked" type="checkbox" class="check_box">
-    <label></label>
-    {{checked}}
-  </div> -->
+    <mat-form-field class="note" floatPlaceholder="never">
+      <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key">
+      <input matInput placeholder="Title" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" maxlength="128">
+      <mat-hint align="end">{{name.value.length}} / 128</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="note" floatPlaceholder="never">
+      <input matInput placeholder="Quick note" name="note" #note="ngModel" [(ngModel)]="itemsService.selectedItem.note" maxlength="256">
+      <mat-hint align="end">{{note.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-menu #date="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
+        <mat-form-field>
+            <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly [(ngModel)]="inputModel">
+        </mat-form-field>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+        <!-- <mat-datepicker #picker></mat-datepicker> -->
+    </mat-menu>
+
+    <button mat-button class="btn btn-default submit" type="submit"><i class="fa fa-floppy-o"></i>Submit</button>
   </form>
-  <!-- <mat-card-actions> -->
-    <!-- <button mat-button> <i class="material-icons">star</i> </button>
-    <button mat-button> <i class="material-icons">star_border</i> </button> -->
+
     <button mat-button [matMenuTriggerFor]="menu"> <i class="material-icons">label</i> </button>
     <button mat-button (click)="toggleDatePicker()"> <i class="material-icons">list</i> </button>
     <button mat-button [matMenuTriggerFor]="date"> <i class="material-icons">calendar_today</i> </button>
@@ -31,21 +31,12 @@
       <button mat-menu-item (click)="newTag()" name="button" class="">New Tag</button>
     </mat-menu>
 
-    <mat-menu #date="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
-      <mat-form-field>
-            <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
-        </mat-form-field>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-menu>
 
 
-
-
-
-    <button mat-button class="btn btn-default submit" type="submit" [disabled]="!itemForm.valid"><i class="fa fa-floppy-o"></i>Submit</button>
-  <!-- </mat-card-actions> -->
+    <!-- {{inputModel}} -->
 </mat-card>
-<mat-card class="datepicker"></mat-card>
+
+<!-- <mat-card class="datepicker"></mat-card> -->
 <!-- <mat-accordion>
   <mat-expansion-panel [expanded]="panelOpenState" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>

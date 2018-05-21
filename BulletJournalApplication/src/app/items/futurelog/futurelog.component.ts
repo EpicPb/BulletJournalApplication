@@ -56,16 +56,18 @@ export class FuturelogComponent implements OnInit {
   ngOnInit() {
     var x = this.itemsService.getData();
     setTimeout(() => {
-      console.log('getdata');
+      // console.log('getdata');
       this.x = this.itemsService.getData();
       this.x.snapshotChanges().subscribe(i => {
         this.itemList = [];
         i.forEach(element => {
           var y = element.payload.toJSON();
           y["$key"] = element.key;
-          if(y.month != null){
+          // console.log(y);
+          // console.log(y["month"]);
+          if(y["month"] != "0"){
             this.itemList.push(y as Task);
-            console.log(y);
+            // console.log("taskdfkskfaksdf");
           }
         });
       });
@@ -103,7 +105,7 @@ export class FuturelogComponent implements OnInit {
 
  droppedData: string = '';
  splitData: string [];
- evont: Evont;
+ task: Task;
 
  onDrop({dropData}: {dropData: any}, mon: any): void {
    this.dropOverActive = false;
@@ -115,17 +117,18 @@ export class FuturelogComponent implements OnInit {
    console.log(dropData);
 
 
-   this.evont = { '$key': this.splitData[0],
+   this.task = { '$key': this.splitData[0],
              'title': this.splitData[1],
              // 'datetime': this.splitData[2],
              'day': '',
-             'description': '',
+             'note': '',
              'month': mon,
-             'year': ''
+             'year': '',
+             'priority': 'high'
            };
 
 
-   this.itemsService.updateEvent(this.evont);
+   this.itemsService.updateTask(this.task);
 
    // console.log(mon);
    // console.log(this.droppedData);

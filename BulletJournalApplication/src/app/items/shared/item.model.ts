@@ -1,11 +1,11 @@
 export class Item{
  $key: string;
  title: string;
- datetime: string;
+ // datetime: string;
 }
 
 export class Note extends Item{
-  description: string;
+  note: string;
 }
 
 export class Evont extends Note{

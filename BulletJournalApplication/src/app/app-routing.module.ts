@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CalenderComponent } from './calender/calender.component';
 import { ItemsComponent } from './items/items.component';
+import { MonthlylogComponent } from './items/monthlylog/monthlylog.component';
+
 
 const routes: Routes = [
    {
@@ -17,7 +19,7 @@ const routes: Routes = [
      children: [
          {
            path: 'calendar',
-           component: CalenderComponent,
+           component: MonthlylogComponent,
            // outlet: 'sidenav-outlet',
          },
          {

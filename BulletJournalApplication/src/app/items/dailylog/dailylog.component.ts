@@ -29,7 +29,7 @@ export class DailylogComponent implements OnInit {
           console.log('object: ');
           console.log(y);
           // if(y.month != null && y.day != null){
-            this.itemList.push(y as Item);
+            this.itemList.push(y as Task);
           // }
 
         });
@@ -37,7 +37,7 @@ export class DailylogComponent implements OnInit {
     },4000);
     }
 
-    onEdit(it: Item){
+    onEdit(it: Task){
       this.itemsService.selectedItem = Object.assign({},it);
     }
 

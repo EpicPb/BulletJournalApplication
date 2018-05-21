@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   photoURL: string;
   options: FormGroup;
 
+
   constructor(public AfService: AfService, private router: Router, private route: ActivatedRoute, private cookieService: CookieService, private fb: FormBuilder) {
     this.options = fb.group({
       'fixed': false,

@@ -14,7 +14,7 @@ export class ItemsService {
   itemList: AngularFireList<any>;
   // itemList: FirebaseListObservable<any[]> = null;
   list: Task[];
-  selectedItem: Item = new Item();
+  selectedItem: Task = new Task();
   userId: string;
 
 
@@ -29,18 +29,6 @@ export class ItemsService {
 
         })
 
-
-
-    // this.afAuth.user.subscribe(res => {
-    //   responseAfterSuccess => {
-    //     if(user) this.userId = user.uid;
-    //     console.log('initialize item service: ' + this.userId);
-    //   }
-    //   responseAfterError => {
-    //     console.log('error');
-    //   }
-    //
-    // })
    }
    getData2() {
      if (!this.userId) return;
@@ -60,7 +48,7 @@ export class ItemsService {
 
     getData() {
       if (!this.userId) return;
-          console.log("getData " + this.userId);
+          // console.log("getData " + this.userId);
           // this.itemList = this.firebase.list('items/' +  this.userId + '/');
           this.itemList = this.firebase.list('Notes/' +  this.userId + '/');
 
@@ -92,7 +80,7 @@ export class ItemsService {
       var d = new Date();
       this.itemList.push({
         title: note.title,
-        description: note.description,
+        note: note.note,
       });
     }
 
@@ -100,7 +88,7 @@ export class ItemsService {
       this.itemList.update(note.$key,
       {
         title: note.title,
-        description: note.description,
+        note: note.note,
       });
     }
 
@@ -111,31 +99,58 @@ export class ItemsService {
     // Event extends Note
 
 
-    insertEvent(event: Evont){
-      var d = new Date();
+    // insertEvent(event: Evont){
+    //   var d = new Date();
+    //   this.itemList.push({
+    //     title: event.title,
+    //     day: event.day,
+    //     description: event.description,
+    //     month: event.month,
+    //     year:event.year,
+    //   });
+    // }
+    //
+    // updateEvent(event: Evont){
+    //   console.log("did it make it to the update?");
+    //   console.log(event);
+    //   this.itemList.update(event.$key,
+    //   {
+    //     title: event.title,
+    //     day: event.day,
+    //     description: event.description,
+    //     month: event.month,
+    //     year:event.year,
+    //   });
+    // }
+    //
+    // deleteEvent($key: string){
+    //   this.itemList.remove($key);
+    // }
+
+    insertTask(task: Task){
+      // var d = new Date();
+      console.log('insert task');
       this.itemList.push({
-        title: event.title,
-        day: event.day,
-        description: event.description,
-        month: event.month,
-        year:event.year,
+        title: task.title,
+        day: '0',
+        note: task.note,
+        month: '0',
+        year: '0',
+        priority: 'High'
       });
     }
 
-    updateEvent(event: Evont){
+    updateTask(task: Task){
       console.log("did it make it to the update?");
-      console.log(event);
-      this.itemList.update(event.$key,
+      console.log(task);
+      this.itemList.update(task.$key,
       {
-        title: event.title,
-        day: event.day,
-        description: event.description,
-        month: event.month,
-        year:event.year,
+        title: task.title,
+        day: '0',
+        note: '0',
+        month: task.month,
+        year: '0',
+        priority: 'High'
       });
-    }
-
-    deleteEvent($key: string){
-      this.itemList.remove($key);
     }
 }
