@@ -2,13 +2,14 @@
   <mat-tab label="Home">
     <ng-template mat-tab-label><i class="material-icons">home</i></ng-template>
     <div class="container">
-      <div class="home">
-        <div class="app-item">
-          <app-item></app-item>
-        </div>
-        <div class="app-list">
-          <app-unorganizedlist></app-unorganizedlist>
-        </div>
+      <div class="col col-app-unorgList">
+        <app-unorganizedlist></app-unorganizedlist>
+      </div>
+      <div class="col col-item">
+        <app-item></app-item>
+      </div>
+      <div class="col col-month">
+        <app-monthlylog></app-monthlylog>
       </div>
     </div>
   </mat-tab>

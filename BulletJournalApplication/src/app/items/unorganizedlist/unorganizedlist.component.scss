@@ -34,3 +34,12 @@ i.material-icons:hover{
   color: rgba(163, 163, 163, 1);
   cursor: pointer;
 }
+
+.container{
+  // padding: 20px;
+  // overflow-y: auto;
+  // min-height: 50vh;
+  // max-height: 80vh;
+  // overflow-x: hidden;
+  flex-direction: column;
+}

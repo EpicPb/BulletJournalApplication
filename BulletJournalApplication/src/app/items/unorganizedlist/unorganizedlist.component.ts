@@ -20,7 +20,6 @@ export class UnorganizedlistComponent implements OnInit {
   ngOnInit() {
     var x = this.itemsService.getData();
     setTimeout(() => {
-      // console.log('getdata');
       this.x = this.itemsService.getData();
       this.x.snapshotChanges().subscribe(i => {
         this.showSpinner = false;
@@ -34,17 +33,7 @@ export class UnorganizedlistComponent implements OnInit {
         });
       });
     },5000);
-      // setTimeout(() => {
-      //     this.showSpinner = false;
-      //     this.itemList = [];
-      //       for(let item of this.itemsService.list){
-      //       console.log("month:" + item.month);
-      //       if(item.month == undefined){
-      //         console.log(item);
-      //         this.itemList.push(item as Item);
-      //     }
-      //   }
-      // },5000);
+
   }
 
 

@@ -51,14 +51,19 @@
   left: 0;
   right: 0;
   background-color: rgba(250, 250, 250, 1);
+  // background-color: linear-gradient(up, rgb(11, 190, 237), rgb(12, 226, 149));
+
 }
 
 .example-sidenav {
-  display: flex;
+  // display: flex;
   // align-items: center;
-  justify-content: flex-start;
+  // justify-content: flex-start;
   width: 300px;
   background: rgba(200, 200, 200, 0.0);
+  overflow-x: hidden;
+  // background-color: linear-gradient(up, rgb(11, 190, 237), rgb(12, 226, 149));
+
 
 }
 .mat-list-item{

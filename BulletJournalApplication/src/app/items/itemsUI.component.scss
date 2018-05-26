@@ -1,33 +1,51 @@
-.col-app-item{
-    flex: 1 1 auto;
+.col{
+  display: block;
+  flex-grow: 1;
+}
+.col + .col{
+  padding-left: 10px;
+}
+
+.col-item{
+  width: 45%;
+}
+.col-month{
+  width: 20%;
 }
 .col-app-unorgList{
   width: 20%;
 }
+
+
 .container{
   display: flex;
   flex-direction: row;
   padding: 10px;
+  justify-content: space-around;
 }
 
-.col{
-  width: 20%;
-}
 .home{
   width: 100%;
   min-height: 80vh;
-  display: flex;
+  // display: flex;
   // justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  // align-items: center;
+  // flex-direction: column;
 }
 .app-item{
   margin-bottom: 20px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
 }
 .app-list{
   width: 60vw;
 }
 
+
 // .submit{
 //   visibility: hidden;
+// }
+// .spacer {
+//   flex: 1 1 auto;
 // }

@@ -1,14 +1,17 @@
 <!-- <h3 class="text-center">Notes</h3> -->
 <!-- <div class="" *ngIf="itemsService.userId != null"> -->
-<h4>Unorganized Notes</h4><br>
-<div class="loading">
-  <app-loading-spinner *ngIf = "showSpinner"></app-loading-spinner>
-</div>
-  <mat-card mwlDraggable dropData="{{item.$key}},{{item.title}}" *ngFor="let item of itemList">
-    {{item.title}}
-    <span class="spacer"></span>
-    <button (click)="onEdit(item)"><i class="material-icons">mode_edit</i></button>
-    <button (click)="onDelete(item.$key)"><i class="material-icons">delete</i></button>
+<mat-card class="container">
+  <h4>Unorganized Notes</h4><br>
+  <div class="loading">
+    <app-loading-spinner *ngIf = "showSpinner"></app-loading-spinner>
+  </div>
+    <mat-card mwlDraggable dropData="{{item.$key}},{{item.title}}" *ngFor="let item of itemList">
+      {{item.title}}
+      <span class="spacer"></span>
+      <button (click)="onEdit(item)"><i class="material-icons">mode_edit</i></button>
+      <button (click)="onDelete(item.$key)"><i class="material-icons">delete</i></button>
 
-  </mat-card>
+    </mat-card>
+</mat-card>
+
 <!-- </div> -->

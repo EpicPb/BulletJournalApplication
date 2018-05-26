@@ -13,7 +13,7 @@
 
     <mat-menu #date="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
         <mat-form-field>
-            <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly [(ngModel)]="inputModel">
+            <input name="inputModel" matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly [(ngModel)]="inputModel">
         </mat-form-field>
         <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
         <!-- <mat-datepicker #picker></mat-datepicker> -->

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CalenderComponent } from './calender/calender.component';
+// import { CalenderComponent } from './calender/calender.component';
 import { ItemsComponent } from './items/items.component';
 import { MonthlylogComponent } from './items/monthlylog/monthlylog.component';
 
@@ -38,4 +38,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent, HomeComponent, CalenderComponent, ItemsComponent]
+export const routingComponents = [LoginComponent, HomeComponent, ItemsComponent]

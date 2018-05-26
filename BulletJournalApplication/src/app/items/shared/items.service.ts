@@ -1,57 +1,42 @@
 import { Injectable } from '@angular/core';
-
 import { Item, Note, Evont, Task } from './item.model';
-
 import { AngularFireAuth } from 'angularfire2/auth';
-
 import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
-
 import { AfService } from '../../providers/af.service';
 import { DatePipe } from '@angular/common';
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class ItemsService {
   itemList: AngularFireList<any>;
-  // itemList: FirebaseListObservable<any[]> = null;
   list: Task[];
   selectedItem: Task = new Task();
   userId: string;
 
-
-
-  constructor(private AfService: AfService , private firebase: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    // console.log('initialize item service1: ' + this.userId);
-
+  constructor(private AfService: AfService , private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
     this.AfService.user.subscribe(user => {
           if(user) this.userId = user.uid;
-          // console.log('initialize item service2: ' + this.userId);
-
 
         })
 
    }
    getData2() {
      if (!this.userId) return;
-         // this.itemList = this.firebase.list('items/' +  this.userId + '/');
-        this.itemList = this.firebase.list('Notes/' +  this.userId + '/');
-
+        this.itemList = this.db.list('Notes/' +  this.userId + '/');
          this.itemList.snapshotChanges().subscribe(i => {
            this.list = [];
            i.forEach(element => {
              var y = element.payload.toJSON();
              y["$key"] = element.key;
                this.list.push(y as Task);
-               console.log(y);
            });
          });
    }
 
     getData() {
       if (!this.userId) return;
-          // console.log("getData " + this.userId);
-          // this.itemList = this.firebase.list('items/' +  this.userId + '/');
-          this.itemList = this.firebase.list('Notes/' +  this.userId + '/');
-
+          this.itemList = this.db.list('Notes/' +  this.userId + '/');
           return this.itemList;
     }
     insertItem(item: Item){
@@ -96,36 +81,6 @@ export class ItemsService {
       this.itemList.remove($key);
     }
 
-    // Event extends Note
-
-
-    // insertEvent(event: Evont){
-    //   var d = new Date();
-    //   this.itemList.push({
-    //     title: event.title,
-    //     day: event.day,
-    //     description: event.description,
-    //     month: event.month,
-    //     year:event.year,
-    //   });
-    // }
-    //
-    // updateEvent(event: Evont){
-    //   console.log("did it make it to the update?");
-    //   console.log(event);
-    //   this.itemList.update(event.$key,
-    //   {
-    //     title: event.title,
-    //     day: event.day,
-    //     description: event.description,
-    //     month: event.month,
-    //     year:event.year,
-    //   });
-    // }
-    //
-    // deleteEvent($key: string){
-    //   this.itemList.remove($key);
-    // }
 
     insertTask(task: Task){
       // var d = new Date();

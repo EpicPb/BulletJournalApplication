@@ -26,29 +26,33 @@ import { ItemComponent } from './items/item/item.component';
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 
-import { AfService } from './providers/af.service';
+// import { AfService } from './providers/af.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 
 import { DragAndDropModule } from 'angular-draggable-droppable';
 
-import { CookieService } from 'ngx-cookie-service';
+// import { CookieService } from 'ngx-cookie-service';
 import { HttpModule } from '@angular/http';
 
-import { ItemsService } from './items/shared/items.service';
+// import { ItemsService } from './items/shared/items.service';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
-import { CalenderComponent } from './calender/calender.component';
-import { HeaderComponent } from './calender/header/header.component';
-import { ListComponent } from './calender/list/list.component';
-import { MonthviewComponent } from './calender/monthview/monthview.component';
-import { EmptydateComponent } from './calender/monthview/emptydate/emptydate.component';
-import { MonthdateComponent } from './calender/monthview/monthdate/monthdate.component';
+// import { CalenderComponent } from './calender/calender.component';
+// import { HeaderComponent } from './calender/header/header.component';
+// import { ListComponent } from './calender/list/list.component';
+// import { MonthviewComponent } from './calender/monthview/monthview.component';
+// import { EmptydateComponent } from './calender/monthview/emptydate/emptydate.component';
+// import { MonthdateComponent } from './calender/monthview/monthdate/monthdate.component';
 
-import { AuthService } from './auth.service';
-import {ListdataService } from './listdata.service';
-import {HttpService} from './http.service';
+// import { AuthService } from './auth.service';
+// import {ListdataService } from './listdata.service';
+// import {HttpService} from './http.service';
+
+// import{ ClassroomService } from './providers/classroom.service';
+import { CoreModule } from './core/core.module';
+
 
 
 @NgModule({
@@ -63,12 +67,12 @@ import {HttpService} from './http.service';
     ItemComponent,
     LoginComponent,
     LoadingSpinnerComponent,
-    CalenderComponent,
-    HeaderComponent,
-    ListComponent,
-    MonthviewComponent,
-    EmptydateComponent,
-    MonthdateComponent
+    // CalenderComponent,
+    // HeaderComponent,
+    // ListComponent,
+    // MonthviewComponent,
+    // EmptydateComponent,
+    // MonthdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,17 +82,19 @@ import {HttpService} from './http.service';
     MaterialModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    CalendarModule.forRoot(),
+    // CalendarModule.forRoot(),
     DragAndDropModule.forRoot(),
     HttpModule,
     ModalModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    CoreModule,
+
 
 
 
   ],
-  providers: [ AfService, CookieService, ItemsService, AuthService, ListdataService, HttpService ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
