@@ -18,21 +18,25 @@ export class UnorganizedlistComponent implements OnInit {
  }
 
   ngOnInit() {
-    var x = this.itemsService.getData();
-    setTimeout(() => {
-      this.x = this.itemsService.getData();
-      this.x.snapshotChanges().subscribe(i => {
-        this.showSpinner = false;
-        this.itemList = [];
-        i.forEach(element => {
-          var y = element.payload.toJSON();
-          y["$key"] = element.key;
-          if(y["month"] == "0"){
-            this.itemList.push(y as Task);
-          }
+    if(!this.itemList){
+      var x = this.itemsService.getData();
+      setTimeout(() => {
+        this.x = this.itemsService.getData();
+        this.x.snapshotChanges().subscribe(i => {
+          this.showSpinner = false;
+          this.itemList = [];
+          i.forEach(element => {
+            var y = element.payload.toJSON();
+            y["$key"] = element.key;
+            if(y["month"] == "0"){
+              this.itemList.push(y as Task);
+            }
+          });
         });
-      });
-    },5000);
+      },5000);
+    }else{
+      this.showSpinner = false;
+    }
 
   }
 

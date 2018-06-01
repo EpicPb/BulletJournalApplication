@@ -10,12 +10,10 @@ import { Router } from '@angular/router';
 
 // import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 
-@Injectable({
-  providedIn:'root'
-})
+@Injectable()
 export class AfService {
-  static user: Observable<firebase.User>;
-  static GoogleAccessToken: string;
+  user: Observable<firebase.User>;
+  GoogleAccessToken: string;
   // static AfService:AfService;
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
@@ -40,6 +38,7 @@ export class AfService {
       // this.afAuth.auth.signInWithPopup(provider);
       this.afAuth.auth.signInWithPopup(provider).then(function(result){
         this.GoogleAccessToken = result.credential.accessToken;
+        console.log("tokeeeeeeeennnnnnnnnn" + this.GoogleAccessToken);
       });
 
 

@@ -14,6 +14,7 @@ import { AngularFireList  } from 'angularfire2/database';
 export class FuturelogComponent implements OnInit {
 
   daysofweek = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  // months = ['01', '02','03','04','05','06','07','08','09','10','11','12'];
   months = ['January', 'February','March','April','May','June','July','August','September','October','November','December'];
   //
   //
@@ -26,30 +27,11 @@ export class FuturelogComponent implements OnInit {
   months2 = this.months.slice(this.monthindex);
 
 
-  // itemList: Item[];
   itemList: Task[];
 
   x: AngularFireList<any>;
 
-
-
-  // year = this.pipe.transform(this.today, 'y');
-  // day = this.pipe.transform(this.today, 'd');
-  // weekofmonth = this.pipe.transform(this.today, 'W');
-  // dayofweek = this.pipe.transform(this.today, 'EEEE');
-  //
-  // month2 = this.pipe.transform(this.today, 'LL');
-  //
-  //
-  //
-  // fixedTimezone = this.year + '-' + this.month2 + '-00' + 'T09:03:01+0900';
-  //
-  // day2 = this.pipe.transform(this.fixedTimezone, 'd');
-
-
-
   constructor(private itemsService: ItemsService) {
-    // this.itemsService.getData2();
 
   }
 
@@ -75,19 +57,6 @@ export class FuturelogComponent implements OnInit {
   }
 
   dropOverActive: boolean = false;
-
-  // January: boolean = false;
-  // February: boolean = false;
-  // March: boolean = false;
-  // April: boolean = false;
-  // May: boolean = false;
-  // June: boolean = false;
-  // July: boolean = false;
-  // August: boolean = false;
-  // September: boolean = false;
-  // October: boolean = false;
-  // November: boolean = false;
-  // December: boolean = false;
 
   months1 = { 'January' : false,
              'February' : false,
@@ -124,7 +93,8 @@ export class FuturelogComponent implements OnInit {
              'note': '',
              'month': mon,
              'year': '',
-             'priority': 'high'
+             'priority': 'high',
+             'tags': []
            };
 
 

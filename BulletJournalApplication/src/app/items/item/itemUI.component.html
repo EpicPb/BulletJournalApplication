@@ -1,20 +1,60 @@
 
 <mat-card class="input">
   <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
-    <mat-form-field class="note" floatPlaceholder="never">
+
       <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key">
-      <input matInput placeholder="Title" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" maxlength="128">
-      <mat-hint align="end">{{name.value.length}} / 128</mat-hint>
+      <input type="hidden" #month="ngModel" [(ngModel)]="itemsService.selectedItem.month" name="month">
+      <input type="hidden" #tags="ngModel" [(ngModel)]="itemsService.selectedItem.tags" name="tags">
+
+
+    <mat-form-field class="note title" floatPlaceholder="never">
+      <input matInput placeholder="Title" autocomplete="off" name="title" #name="ngModel" [(ngModel)]="itemsService.selectedItem.title" maxlength="128">
+      <!-- <mat-hint align="end">{{name.value.length}} / 128</mat-hint> -->
     </mat-form-field>
+    <!-- <mat-form-field> -->
+    <input class="date" name="inputModel" placeholder=""  [matDatepicker]="picker" readonly [(ngModel)]="inputModel">
+    <!-- </mat-form-field> -->
     <mat-form-field class="note" floatPlaceholder="never">
-      <input matInput placeholder="Quick note" name="note" #note="ngModel" [(ngModel)]="itemsService.selectedItem.note" maxlength="256">
-      <mat-hint align="end">{{note.value.length}} / 256</mat-hint>
+      <input matInput placeholder="Quick note" autocomplete="off" name="note" #note="ngModel" [(ngModel)]="itemsService.selectedItem.note" maxlength="256">
+      <!-- <mat-hint align="end">{{note.value.length}} / 256</mat-hint> -->
     </mat-form-field>
 
+    <div class="tag" *ngIf="showtag == true">
+      <mat-form-field floatPlaceholder="never" class="demo-chip-list">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let fruit of fruits"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(fruit)">
+            {{fruit}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            #fruitInput
+            [formControl]="fruitCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+            {{ fruit }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+
+
     <mat-menu #date="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
-        <mat-form-field>
+        <!-- <mat-form-field>
             <input name="inputModel" matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly [(ngModel)]="inputModel">
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
         <!-- <mat-datepicker #picker></mat-datepicker> -->
     </mat-menu>
@@ -22,14 +62,15 @@
     <button mat-button class="btn btn-default submit" type="submit"><i class="fa fa-floppy-o"></i>Submit</button>
   </form>
 
-    <button mat-button [matMenuTriggerFor]="menu"> <i class="material-icons">label</i> </button>
-    <button mat-button (click)="toggleDatePicker()"> <i class="material-icons">list</i> </button>
-    <button mat-button [matMenuTriggerFor]="date"> <i class="material-icons">calendar_today</i> </button>
-    <button mat-button> <i class="material-icons">alarm_add</i> </button>
-
-    <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
+    <button mat-button (click)="toggletag()"> <i class="material-icons">label</i> </button>
+    <!-- <button mat-button (click)="toggletag()"> <i class="material-icons">list</i> </button> -->
+    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+    <!-- <button mat-button [matMenuTriggerFor]="date" (click)="picker.open()"><i class="material-icons">calendar_today</i> </button> -->
+    <button mat-button (click)="picker.open()"> <i class="material-icons">alarm_add</i> </button>
+    <!-- <mat-menu #menu="matMenu" xPosition='before' yPosition='below' overlapTrigger='false'>
       <button mat-menu-item (click)="newTag()" name="button" class="">New Tag</button>
-    </mat-menu>
+    </mat-menu> -->
+
 
 
 

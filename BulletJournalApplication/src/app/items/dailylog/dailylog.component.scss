@@ -1,12 +1,13 @@
 .container{
   width: 100%;
-  padding: 1vw;
+  // padding: 1vw;
+  margin-top: 1rem;
 }
 mat-card{
   word-break: break-all;
   padding: 14px;
   margin-bottom: 2px;
-  width: 50vw;
+  // width: 50vw;
   display: flex;
   flex: 1 1 auto;
   cursor: pointer;

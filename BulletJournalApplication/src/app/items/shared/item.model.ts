@@ -16,4 +16,10 @@ export class Evont extends Note{
 
 export class Task extends Evont{
   priority: string;
+  tags: string[];
+}
+
+
+export class Tag{
+  tags:string[]
 }

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { AfService } from './af.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
-@Injectable({
-  providedIn:'root'
-})
+@Injectable()
 export class ClassroomService {
   private apiURL = "https://classroom.googleapis.com/v1/courses"
   data: any = {}
@@ -15,7 +13,7 @@ export class ClassroomService {
 
   constructor(private http: Http, private afAuth: AngularFireAuth, private AfService: AfService) {
     console.log("classroom");
-    console.log(AfService.GoogleAccessToken);
+    console.log(AfService["GoogleAccessToken"]);
     console.log(JSON.parse(JSON.stringify(this.afAuth.auth.currentUser)));
     console.log("token: " + JSON.parse(JSON.stringify(this.afAuth.auth.currentUser)).stsTokenManager.accessToken);
     this.token = JSON.parse(JSON.stringify(this.afAuth.auth.currentUser)).stsTokenManager.accessToken;
@@ -47,7 +45,7 @@ export class ClassroomService {
     // let req = new HttpRequest();
     // req.
 
-    return this.http.get(this.apiURL, opts).map((res: HttpResponse) => res.json())
+    return this.http.get(this.apiURL, opts).map((res:Response) => res.json())
   }
 
   getCourseList(){

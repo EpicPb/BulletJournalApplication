@@ -8,17 +8,17 @@
   width: 100%;
 
 }
-.title{
-  padding: 1vw;
-  border-radius: .2vw;
-  border: none;
-  width: 50vw;
-  font-size: 2vh;
-
-}
-.title:focus{
-  outline: none;
-}
+// .title{
+//   padding: 1vw;
+//   border-radius: .2vw;
+//   border: none;
+//   width: 50vw;
+//   font-size: 2vh;
+//
+// }
+// .title:focus{
+//   outline: none;
+// }
 
 .full-width{
   width: 100%;
@@ -62,6 +62,12 @@ mat-card{
 }
 .note{
   width: 100%;
+  color: black;
+}
+.title{
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .submit{
   position: absolute;
@@ -139,4 +145,25 @@ mat-accordion mat-expansion-panel{
     width: 32px;
     display:inline-block;
     padding: 0 0 0 0px;
+}
+
+.demo-chip-list {
+  width: 100%;
+}
+
+.mat-chip{
+  height: 1rem;
+  padding: 7px 0px 7px 12px;
+}
+
+.mat-chip:not(.mat-basic-chip){
+  padding: 7px 3px 7px 12px;
+}
+
+.tags{
+  transition: all 1s ease;
+}
+.date{
+  outline: none;
+  border: none;
 }

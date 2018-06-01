@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Item, Note, Evont, Task } from './item.model';
+import { Item, Note, Evont, Task, Tag } from './item.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
 import { AfService } from '../../providers/af.service';
 import { DatePipe } from '@angular/common';
 
-@Injectable({
-  providedIn:'root'
-})
+@Injectable()
 export class ItemsService {
   itemList: AngularFireList<any>;
   list: Task[];
+  tags: string[];
   selectedItem: Task = new Task();
   userId: string;
 
@@ -19,6 +18,7 @@ export class ItemsService {
           if(user) this.userId = user.uid;
 
         })
+        this.getData2();
 
    }
    getData2() {
@@ -29,7 +29,8 @@ export class ItemsService {
            i.forEach(element => {
              var y = element.payload.toJSON();
              y["$key"] = element.key;
-               this.list.push(y as Task);
+             this.list.push(y as Task);
+             this.tags.push(y["tags"] as string);
            });
          });
    }
@@ -81,23 +82,35 @@ export class ItemsService {
       this.itemList.remove($key);
     }
 
+////////////////////////////////////////////////////////////////
+
 
     insertTask(task: Task){
       // var d = new Date();
       console.log('insert task');
+      console.log(task);
+      if(!task.tags){
+        task.tags.push("0");
+      }
+
       this.itemList.push({
         title: task.title,
         day: '0',
         note: task.note,
         month: '0',
         year: '0',
-        priority: 'High'
+        priority: 'High',
+        tags: task.tags
       });
     }
 
     updateTask(task: Task){
       console.log("did it make it to the update?");
       console.log(task);
+      if(!task.tags){
+        task.tags.push("0");
+      }
+
       this.itemList.update(task.$key,
       {
         title: task.title,
@@ -105,7 +118,8 @@ export class ItemsService {
         note: '0',
         month: task.month,
         year: '0',
-        priority: 'High'
+        priority: 'High',
+        tags:task.tags
       });
     }
 }
