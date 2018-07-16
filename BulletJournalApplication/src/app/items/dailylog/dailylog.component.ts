@@ -15,7 +15,7 @@ export class DailylogComponent implements OnInit {
 
     itemList: Item[];
     itemList2: Task[];
-    constructor(private itemsService: ItemsService) { }
+    constructor(private itemsService: ItemsService, public dialog: MatDialog) { }
 
     ngOnInit() {
       setTimeout(() => {
@@ -46,32 +46,39 @@ export class DailylogComponent implements OnInit {
         this.itemsService.deleteItem(key);
       }
     }
-  //
-  //   openDialog(): void {
-  //   let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //     width: '250px',
-  //     data: { }
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //
-  //   });
-  // }
-}
 
-// @Component({
-//   selector: 'dialog-overview-example-dialog',
-//   templateUrl: 'dailylogdialog.html',
-// })
-// export class DialogOverviewExampleDialog {
-//
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: any) { }
-//
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-//
-// }
+    openDialog(task: Task): void {
+    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: { task: task }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dailylogdialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  tags: string[] = [];
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+      if(!data.task.tags){
+        this.tags.push(data.task.tags );
+      }
+      console.log(this.tags);
+
+     }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

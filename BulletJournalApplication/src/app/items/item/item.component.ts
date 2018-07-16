@@ -19,9 +19,9 @@ import {map, startWith} from 'rxjs/operators';
 export class ItemComponent implements OnInit {
 
   constructor(private itemsService: ItemsService) {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredtags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => fruit ? this.filter(fruit) : this.allFruits.slice()));
+        map((tag: string | null) => tag ? this.filter(tag) : this.alltags.slice()));
   }
   checked = false;
   inputdate: any;
@@ -37,15 +37,15 @@ export class ItemComponent implements OnInit {
 
   separatorKeysCodes = [ENTER, COMMA];
 
-  fruitCtrl = new FormControl();
+  tagCtrl = new FormControl();
 
-  filteredFruits: Observable<any[]>;
+  filteredtags: Observable<any[]>;
 
-  fruits = [
+  tags = [
 
   ];
 
-  allFruits = [
+  alltags = [
     'School',
     'Personal',
     'DATACOMM',
@@ -61,8 +61,8 @@ export class ItemComponent implements OnInit {
   onSubmit(itemForm: NgForm){
     console.log("onsubmit");
     // console.log(this.inputdate);
-    console.log(this.fruits);
-    itemForm.value.tags = this.fruits;
+    console.log(this.tags);
+    itemForm.value.tags = this.tags;
 
     if(itemForm.value.$key == null){
       console.log(itemForm.value);
@@ -74,7 +74,7 @@ export class ItemComponent implements OnInit {
       console.log("update");
     }
     this.resetForm(itemForm);
-    this.fruits = [];
+    this.tags = [];
   }
 
   resetForm(itemForm?: NgForm){
@@ -107,15 +107,15 @@ export class ItemComponent implements OnInit {
   //     this.panelOpenState = true;
   //   }
   // }
-  @ViewChild('fruitInput') fruitInput: ElementRef;
+  @ViewChild('tagInput') tagInput: ElementRef;
 
     add(event: MatChipInputEvent): void {
       const input = event.input;
       const value = event.value;
 
-      // Add our fruit
+      // Add our tag
       if ((value || '').trim()) {
-        this.fruits.push(value.trim());
+        this.tags.push(value.trim());
       }
 
       // Reset the input value
@@ -123,26 +123,26 @@ export class ItemComponent implements OnInit {
         input.value = '';
       }
 
-      this.fruitCtrl.setValue(null);
+      this.tagCtrl.setValue(null);
     }
 
-    remove(fruit: any): void {
-      const index = this.fruits.indexOf(fruit);
+    remove(tag: any): void {
+      const index = this.tags.indexOf(tag);
 
       if (index >= 0) {
-        this.fruits.splice(index, 1);
+        this.tags.splice(index, 1);
       }
     }
 
     filter(name: string) {
-      return this.allFruits.filter(fruit =>
-          fruit.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      return this.alltags.filter(tag =>
+          tag.toLowerCase().indexOf(name.toLowerCase()) === 0);
     }
 
     selected(event: MatAutocompleteSelectedEvent): void {
-      this.fruits.push(event.option.viewValue);
-      this.fruitInput.nativeElement.value = '';
-      this.fruitCtrl.setValue(null);
+      this.tags.push(event.option.viewValue);
+      this.tagInput.nativeElement.value = '';
+      this.tagCtrl.setValue(null);
     }
 
 

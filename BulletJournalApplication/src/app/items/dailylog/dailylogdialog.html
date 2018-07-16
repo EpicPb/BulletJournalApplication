@@ -1,3 +1,7 @@
 <div class="">
-  dialog works!
+  <h1>{{data.task.title}}</h1>
+  <div class="" *ngFor="let tag of tags ">
+    <mat-chip>{{tag}}</mat-chip>
+  </div>
+  <p>{{data.task.note}}</p>
 </div>

@@ -4,7 +4,7 @@
 
       <input type="hidden" #$key="ngModel" [(ngModel)]="itemsService.selectedItem.$key" name="$key">
       <input type="hidden" #month="ngModel" [(ngModel)]="itemsService.selectedItem.month" name="month">
-      <input type="hidden" #tags="ngModel" [(ngModel)]="itemsService.selectedItem.tags" name="tags">
+      <!-- <input type="hidden" #tags="ngModel" [(ngModel)]="itemsService.selectedItem.tags" name="tags"> -->
 
 
     <mat-form-field class="note title" floatPlaceholder="never">
@@ -23,17 +23,17 @@
       <mat-form-field floatPlaceholder="never" class="demo-chip-list">
         <mat-chip-list #chipList>
           <mat-chip
-            *ngFor="let fruit of fruits"
+            *ngFor="let tag of tags"
             [selectable]="selectable"
             [removable]="removable"
-            (removed)="remove(fruit)">
-            {{fruit}}
+            (removed)="remove(tag)">
+            {{tag}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input
             placeholder="New tag..."
-            #fruitInput
-            [formControl]="fruitCtrl"
+            #tagInput
+            [formControl]="tagCtrl"
             [matAutocomplete]="auto"
             [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -42,8 +42,8 @@
           />
         </mat-chip-list>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-            {{ fruit }}
+          <mat-option *ngFor="let tag of filteredtags | async" [value]="tag">
+            {{ tag }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

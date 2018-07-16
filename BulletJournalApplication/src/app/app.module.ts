@@ -8,7 +8,7 @@ import { ItemsComponent } from './items/items.component';
 import { UnorganizedlistComponent } from './items/unorganizedlist/unorganizedlist.component';
 import { FuturelogComponent } from './items/futurelog/futurelog.component';
 import { MonthlylogComponent } from './items/monthlylog/monthlylog.component';
-import { DailylogComponent } from './items/dailylog/dailylog.component';
+import { DailylogComponent, DialogOverviewExampleDialog } from './items/dailylog/dailylog.component';
 import { HomeComponent } from './home/home.component';
 import {ModalModule} from "ng2-modal";
 
@@ -54,6 +54,25 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { CoreModule } from './core/core.module';
 
 
+import {
+    GoogleApiModule,
+    GoogleApiService,
+    GoogleAuthService,
+    NgGapiClientConfig,
+    NG_GAPI_CONFIG,
+    GoogleApiConfig
+} from "ng-gapi";
+
+
+let gapiClientConfig: NgGapiClientConfig = {
+    client_id: "765732102016-04ja2v5f2vmdvfkuo167iadh3qi5arr7.apps.googleusercontent.com",
+    discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+    scope: [
+        "https://www.googleapis.com/auth/analytics.readonly",
+        "https://www.googleapis.com/auth/analytics",
+        "https://www.googleapis.com/auth/classroom.courses.readonly"
+    ].join(" ")
+};
 
 @NgModule({
   declarations: [
@@ -67,6 +86,7 @@ import { CoreModule } from './core/core.module';
     ItemComponent,
     LoginComponent,
     LoadingSpinnerComponent,
+    DialogOverviewExampleDialog
     // CalenderComponent,
     // HeaderComponent,
     // ListComponent,
@@ -89,12 +109,18 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     AppRoutingModule,
     CoreModule,
+    GoogleApiModule.forRoot({
+            provide: NG_GAPI_CONFIG,
+            useValue: gapiClientConfig
+          }),
 
 
 
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogOverviewExampleDialog]
+
 })
 export class AppModule { }

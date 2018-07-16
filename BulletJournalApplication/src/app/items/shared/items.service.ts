@@ -92,6 +92,9 @@ export class ItemsService {
       if(!task.tags){
         task.tags.push("0");
       }
+      if(!task.title){
+        task.title = "(Untitled)";
+      }
 
       this.itemList.push({
         title: task.title,
@@ -115,7 +118,7 @@ export class ItemsService {
       {
         title: task.title,
         day: '0',
-        note: '0',
+        note: task.note,
         month: task.month,
         year: '0',
         priority: 'High',

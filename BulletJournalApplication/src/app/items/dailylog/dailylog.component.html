@@ -1,31 +1,6 @@
 <div class="container">
-  <mat-card *ngFor="let item of itemList" (click)="openDialog()">
+  <mat-card *ngFor="let item of itemList" (click)="openDialog(item)">
     {{item.title}}
     <span class="spacer"></span>
-    <!-- <button (click)="onEdit(item)"><i class="material-icons">mode_edit</i></button>
-    <button (click)="onDelete(item.$key)"><i class="material-icons">delete</i></button> -->
-
-  </mat-card>
+    </mat-card>
 </div>
-
-
-<!-- <mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Personal data
-      </mat-panel-title>
-      <mat-panel-description>
-        Type your name and age
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
-  </mat-expansion-panel>
-</mat-accordion> -->
